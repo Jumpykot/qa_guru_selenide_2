@@ -14,7 +14,9 @@ public class DragAndDropTest {
         open("https://the-internet.herokuapp.com/drag_and_drop");
         a.shouldHave(Condition.text("A"));
         b.shouldHave(Condition.text("B"));
+
         actions().dragAndDrop(a, b).perform();
+
         a.shouldHave(Condition.text("B"));
         b.shouldHave(Condition.text("A"));
     }
@@ -24,7 +26,9 @@ public class DragAndDropTest {
         open("https://the-internet.herokuapp.com/drag_and_drop");
         a.shouldHave(Condition.text("A"));
         b.shouldHave(Condition.text("B"));
+
         a.dragAndDrop(to(b));
+
         a.shouldHave(Condition.text("B"));
         b.shouldHave(Condition.text("A"));
     }
