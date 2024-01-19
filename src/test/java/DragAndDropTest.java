@@ -10,15 +10,11 @@ public class DragAndDropTest {
     SelenideElement a = $("#column-a");
     SelenideElement b = $("#column-b");
 
-    @BeforeEach
-    void setUp() {
+    @Test
+    void dragAndDropFigureByActions() {
         open("https://the-internet.herokuapp.com/drag_and_drop");
         a.shouldHave(Condition.text("A"));
         b.shouldHave(Condition.text("B"));
-    }
-
-    @Test
-    void dragAndDropFigureByActions() {
         actions().dragAndDrop(a, b).perform();
         a.shouldHave(Condition.text("B"));
         b.shouldHave(Condition.text("A"));
@@ -26,6 +22,9 @@ public class DragAndDropTest {
 
     @Test
     void dragAndDropFigureByElementDragAndDrop() {
+        open("https://the-internet.herokuapp.com/drag_and_drop");
+        a.shouldHave(Condition.text("A"));
+        b.shouldHave(Condition.text("B"));
         a.dragAndDrop(to(b));
         a.shouldHave(Condition.text("B"));
         b.shouldHave(Condition.text("A"));
